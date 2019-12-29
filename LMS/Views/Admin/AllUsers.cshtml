@@ -1,0 +1,119 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<LMS.Models.SignUp>
+
+@{
+    ViewBag.Title = "AllUsers";
+}
+<div style="padding:30px">
+    <h3 style="text-align:center">USERS INFORMATION</h3>
+</div>
+
+
+
+
+<div class="row">
+
+    @if (TempData["editSucc"] != null)
+    {
+        <div class="alert alert-success  text-center" role="alert">
+            @TempData["editSucc"]
+        </div>
+    }
+
+    @if (TempData["deleteSucc"] != null)
+    {
+        <div class="alert alert-danger  text-center" role="alert">
+            @TempData["deleteSucc"]
+        </div>
+    }
+
+    @if (TempData["createSucc"] != null)
+    {
+        <div class="alert alert-success  text-center" role="alert">
+            @TempData["createSucc"]
+        </div>
+    }
+</div>
+
+
+<div class="table-responsive" style="height:auto;width:inherit">
+
+    <table class="ui table ">
+
+
+        <tr>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("USER ID ")
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("FULL NAME")
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("EMAIL")
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("CONTACT")
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("ADDRESS")
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayName("PASSWORD")
+            </th>
+
+            <th style="background-color:#2b004a ; color:azure"></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id })|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id })
+                    </td>
+                }
+
+
+            </tr>
+        }
+
+
+
+    </table>
+ 
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("AllUsers", new { page = page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>
+
+</div>

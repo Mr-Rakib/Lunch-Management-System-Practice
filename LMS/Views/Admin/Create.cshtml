@@ -1,0 +1,91 @@
+﻿@model LMS.Models.SignUp
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (TempData["createSucc"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["createSucc"]
+
+    </div>
+}
+
+@if (TempData["createErr"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["createErr"]
+
+    </div>
+}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div style="height:inherit;width:inherit ; margin-top:30px ">
+
+            <h3 class="text-center" style="margin-bottom:20px">CREATE NEW USER</h3>
+
+            <table class="container">
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["nameErr"]</p>
+                    </td>
+                </tr>
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "E-mail", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["emailErr"]</p>
+                    </td>
+                </tr>
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contact", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["contactErr"]</p>
+                    </td>
+                </tr>
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Address", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["addressErr"]</p>
+                    </td>
+                </tr>
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["passwordErr"]</p>
+                    </td>
+                </tr>
+
+
+                <tr class="row ">
+                    <td style="height:inherit;width:300px ;padding:10px ">
+                        @Html.EditorFor(model => model.confirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "text-danger" })
+                        <p class="text-danger">@TempData["confirmPassErr"]</p>
+                    </td>
+                </tr>
+
+                <tr class="row">
+
+                    <td style="height:inherit;width:300px ; padding:10px ">
+                        <input type="submit" value="Save" class="btn btn-success" style="width:300px" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    }

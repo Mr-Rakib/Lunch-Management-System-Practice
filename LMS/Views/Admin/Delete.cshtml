@@ -1,0 +1,100 @@
+﻿@model LMS.Models.SignUp
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<div>
+    <h4 class="text-center" style="padding:20px">Are you sure to delete this?</h4>
+    <div class="ui two column centered grid">
+
+
+        <div class="ui card " style="padding:10px;width:350px ; display:flex ; align-items:center">
+
+            <div class="image" style="background-color:#fff">
+                <div class="text-center">
+                    <img src="https://www.eastboymm.com/wp-content/uploads/2017/02/Fotolia_188161178_XS-6.jpg" style="height:200px;width:200px" />
+                </div>
+            </div>
+
+            <div class="content text-left" style="padding-left:10%">
+
+                <table >
+                   
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.id)
+                            </td>
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayFor(model => model.id)
+                            </td>
+                        </tr>
+                   
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.name)
+                            </td>
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayFor(model => model.name)
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.email)
+                            </td>
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayFor(model => model.email)
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.contact)
+                            </td>
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayFor(model => model.contact)
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.address)
+                            </td>
+                            <td style="height:inherit;width:200px;height:100px ;padding:5px ">
+                                @Html.DisplayFor(model => model.address)
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayNameFor(model => model.password)
+                            </td>
+                            <td style="height:inherit;width:200px ;padding:5px ">
+                                @Html.DisplayFor(model => model.password)
+                            </td>
+                        </tr>
+
+
+
+                </table>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" style="width:400px; margin:10px" />
+                </div>
+            }
+
+        </div>
+
+
+
+
+    </div>
+
+</div>

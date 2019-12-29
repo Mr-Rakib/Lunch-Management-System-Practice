@@ -1,0 +1,76 @@
+﻿
+<div class="" style="height:inherit; width:inherit;padding:20px ;">
+    <h3 class="display-4 text-center">DASHBOARD</h3>
+</div>
+@if (User.IsInRole("subadmin") || User.IsInRole("admin"))
+{
+<div class="row" style=" margin:30px 0 30px 0">
+    <div class="col-sm-4" >
+        <div class="ui card text-center" style="width:auto;background-color: #6708c7; color : azure;border-radius:15px">
+            <h5>
+                <strong>
+                    <i class="user icon" style="padding-top:5px"></i>
+                    <a style="color: azure">TOTAL USER </a>
+                </strong>
+            </h5>
+            <div class="content">
+                <div class="extra content">
+
+                    <h2><strong>@TempData["totalUser"]</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-4">
+        <div class="ui card text-center" style="width:auto;background-color: #17b4bd; color : azure;border-radius:15px">
+            <h5>
+                <strong>
+                    <i class="user icon" style="padding-top:5px"></i>
+                    <a style="color: azure">TOTAL SUB-ADMIN </a>
+                </strong>
+            </h5>
+
+            <div class="content">
+                <div class="extra content">
+
+                    <h2><strong>@TempData["totalSubAdmin"]</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="ui card text-center" style="width:auto;background-color: #9e0d94; color : azure;border-radius:15px">
+            <h5>
+                <strong>
+                    <i class="user icon" style="padding-top:5px"></i>
+                    <a style="color: azure">TOTAL ADMIN </a>
+                </strong>
+            </h5>
+
+            <div class="content">
+                <div class="extra content">
+
+                    <h2><strong>@TempData["totalAdmin"]</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="ui card" style="height:auto; width:inherit">
+        <h4 class="text-center" style="padding-top:20px">ALL USER'S INFORMATION</h4>
+        <div class="content">
+            <div class="extra content">
+                @Html.Partial("UserInfo")
+            </div>
+        </div>
+    </div>
+
+}
+

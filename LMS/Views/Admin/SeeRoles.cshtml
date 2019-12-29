@@ -1,0 +1,76 @@
+﻿@model IEnumerable<LMS.Models.UsersRole>
+
+@{
+    ViewBag.Title = "SeeRoles";
+}
+
+<div class="" style="height:inherit; width:inherit;padding:30px ">
+    <h3 class="display-4 text-center">USER ROLES</h3>
+</div>
+
+@if (TempData["updateRoleSucc"] != null)
+{
+    <div class="alert alert-success  text-center" role="alert">
+        <p>@TempData["updateRoleSucc"]</p>
+    </div>
+}
+
+@if (TempData["deleteRoleErr"] != null)
+{
+    <div class="alert alert-danger  text-center" role="alert">
+        <p>@TempData["deleteRoleErr"]</p>
+    </div>
+}
+
+
+@if (User.IsInRole("admin")) { 
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="ui table table-responsive">
+    <tr class="">
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayNameFor(model => model.userID)
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayNameFor(model => model.fullName)
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayNameFor(model => model.userRole)
+        </th>
+        <th style="background-color:#2b004a ; color:azure">Modify</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userRole)
+        </td>
+
+        @if (User.IsInRole("admin"))
+        {
+        <td>
+            @Html.ActionLink("Update", "UpdateRole", new { id = item.userID, userRole = item.userRole }) |
+            @Html.ActionLink("Add", "AddRole", new { id = item.userID, userRole = item.userRole }) |
+            @Html.ActionLink("Delete", "DeleteRole", new { id = item.userID, userRole = item.userRole })
+        </td>
+        }
+        
+    </tr>
+    }
+
+</table>

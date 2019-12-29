@@ -1,0 +1,71 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList< LMS.Models.SignUp>
+
+<table class="ui table table-responsive">
+
+    <tr>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayName("USERID")
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayName("FULL NAME")
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayName("EMAIL")
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayName("CONTACT")
+        </th>
+        <th style="background-color:#2b004a ; color:azure">
+            @Html.DisplayName("ADDRESS")
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.PagedListPager(Model, page=> Url.Action("Index", new { page= page} ) , PagedListRenderOptions.PageNumbersOnly)
+</p>
+
+
+<!--
+    double page = ViewBag.TotalPage;
+    if (page == 1)
+    {
+
+    }
+    else
+    {
+        for (int i = 1; i <= page; i++)
+        {
+            <ul class=" pagination">
+                <li>
+                    Html.ActionLink(i.ToString(), "Index", new { pagenumber = i })
+                </li>
+            </ul>
+        }
+    }
+-->

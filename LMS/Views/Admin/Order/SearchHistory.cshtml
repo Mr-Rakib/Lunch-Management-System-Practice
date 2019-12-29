@@ -1,0 +1,39 @@
+﻿@model LMS.Models.Order
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="container" style="padding:10px">
+    @if (User.IsInRole("admin") || User.IsInRole("subadmin"))
+    {
+        <div class="col-sm-3">
+            @Html.EditorFor(model => model.userID, new { htmlAttributes = new { @class = "form-control", @placeholder = "User ID", @required = "required" } })
+        </div>
+    }
+    else
+    {
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.userID, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control", @placeholder = "User ID", @required = "required" } })
+    </div>
+    }
+
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.date1, new { htmlAttributes = new { @class = "form-control", @placeholder = DateTime.Now.Year, @required = "required" } })
+
+    </div>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.date2, new { htmlAttributes = new { @class = "form-control", @placeholder = DateTime.Now.Year, @required = "required" } })
+    </div>
+
+    <div class="col-sm-3">
+        <div>
+            <input type="submit" value="Search" class="btn btn-info" width:auto" />
+        </div>
+
+    </div>
+
+</div>
+
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LMS.Models.Order>
+
+<div class="ui table table-responsive">
+
+
+    <table class="table">
+
+        <tr>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cost)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

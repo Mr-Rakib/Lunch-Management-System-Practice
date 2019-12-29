@@ -1,0 +1,137 @@
+﻿@model LMS.Models.Login
+
+
+
+
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@if (TempData["loginErr"] != null)
+{
+    <div class="alert alert-danger text-center" role="alert" style="margin-top:20px;">
+        @TempData["loginErr"]
+    </div>
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div style="padding-top:100px;">
+       
+        <div class="ui two column centered grid">
+            <div class="ui card " style="padding:10px;width:auto; ">
+                <h4 class="text-center" style="padding:20px">USER LOGIN</h4>
+                <div class="image" style="background-color:#fff">
+                    <div class="text-center">
+                        <img src="https://www.eastboymm.com/wp-content/uploads/2017/02/Fotolia_188161178_XS-6.jpg" style="height:200px;width:200px" />
+                    </div>
+                </div>
+
+                <div class="content" >
+                    <table  >
+                        <tr class="row">
+                            <td style="height:inherit;width:300px ;padding:5px ">
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Username/Email", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+                            <td style="height:inherit;width:300px ; padding:5px ; ">
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+
+                        <tr class="row">
+
+                            <td style="height:inherit;width:300px ;">
+                                <input type="submit" value="Log in" class="btn btn-info" style=" margin:10px 0px 10px -10px;width:92%" />
+                            </td>
+                        </tr>
+                        <tr class="row text-center">
+
+                            <td style="height:inherit;width:300px ; padding:5px ; ">
+                                @Html.ActionLink("Sign Up", "SignUp")
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--
+        <div class="form-group " style="height:500px;width:inherit ; border : 1px ##2b004a  solid; margin-top:50px ;">
+
+            <div>
+                <table class="container">
+
+                    <tr class="row text-center page-header">
+                        <td>
+                            <h3>User Login</h3>
+                        </td>
+                    </tr>
+
+
+                    <tr class="row text-center">
+                        <td>
+                            <img src="https://www.eastboymm.com/wp-content/uploads/2017/02/Fotolia_188161178_XS-6.jpg" style="height:200px;width:200px" />
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr class="row">
+
+                        <td style="height:inherit;width:300px ;padding:5px ">
+                            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Username/Email", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr class="row">
+
+                        <td style="height:inherit;width:300px ; padding:5px ; ">
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                    <tr class="row">
+
+                        <td style="height:inherit;width:300px ; padding:5px ; ">
+                            <input type="submit" value="Log in" class="btn btn-info" style="width:300px" />
+                        </td>
+                    </tr>
+                    <tr class="row text-center">
+
+                        <td style="height:inherit;width:300px ; padding:5px ; ">
+                            @Html.ActionLink("Sign Up", "SignUp")
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+
+
+
+        </div>-->
+}
+
+<div>
+
+</div>

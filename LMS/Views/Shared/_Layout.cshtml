@@ -1,0 +1,90 @@
+﻿@using LMS.Services
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:#eee ; font-size:15px">
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" style=" height: 30px;background-color: #2b004a">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("LMS", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Admin", new { @class = "item" })</li>
+
+
+
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("Create", "Create", "Admin", new { @class = "item" })</li>
+
+                        }
+                        if (User.IsInRole("subadmin") || User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("View All Users", "AllUsers", "Admin", new { @class = "item" })</li>
+                            <li>@Html.ActionLink("See Roles", "SeeRoles", "Admin", new { @class = "item" })</li>
+                        }
+                        <li>@Html.ActionLink("Order", "Order", "Admin", new { @class = "item" })</li>
+                        <li>@Html.ActionLink("Order History", "LunchOrderHistory", "Admin", new { @class = "item" })</li>
+
+
+                        
+                            LoginService ls = new LoginService();
+                       
+
+                        <li>@Html.ActionLink(ls.findByUsername(User.Identity.Name).name.ToString(), "MyProfile", "Admin", new { @class = "item" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    }
+
+                    else
+                    {
+
+                        <li> @Html.ActionLink("Login", "Login", "Login", new { @class = "item" }) </li>
+                    }
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-content" style="min-height: calc(100vh - 250px) ">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer style="  background-color: #2b004a ;margin:auto; height:200px; color:antiquewhite;text-align: center ">
+        <p>&copy; @DateTime.Now.Year - Match Wheel Limited</p>
+    </footer>
+
+
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@model LMS.Models.UsersRole
+
+@{
+    ViewBag.Title = "UpdateRole";
+}
+
+
+
+@if (TempData["updateRoleErr"] != null)
+{
+    <div class="alert alert-danger text-center" role="alert">
+        <p>@TempData["updateRoleErr"]</p>
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    <div style="height:inherit;width:inherit ; margin-top:50px ">
+
+        <h3 class="text-center" style="margin-bottom:20px">UPDATE USER ROLE</h3>
+
+        <table class="container">
+
+            <tr class="row ">
+                <td style="height:inherit;width:300px ;padding:10px ">
+                    @Html.EditorFor(model => model.userID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.userID, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr class="row ">
+                <td style="height:inherit;width:300px ;padding:10px ">
+                    @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr class="row ">
+                <td style="height:inherit;width:300px ;padding:10px ">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr class="row ">
+                <td style="height:inherit;width:300px ;padding:10px ">
+                    @Html.EditorFor(model => model.userCurrentRole, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr class="row ">
+                <td style="height:inherit;width:300px ;padding:10px ">
+                    @Html.DropDownListFor(model => model.userRole,
+                                    new SelectList(Enum.GetValues(typeof(LMS.Models.Roles))),
+                                    "Select Role",
+                                    new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.userRole, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr class="row">
+
+                <td style="height:inherit;width:300px ; padding:10px ">
+                    <input type="submit" value="Update" class="btn btn-info" style="width:300px" />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+}

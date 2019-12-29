@@ -1,0 +1,70 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IEnumerable<LMS.Models.Order>
+
+
+<div class="ui table table-responsive">
+
+
+    <table class="table">
+        <tr>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.orderDate)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th style="background-color:#2b004a ; color:azure">Modify</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "EditOrder", new { id = item.userID, date = item.orderDate }) |
+                        @Html.ActionLink("Delete", "DeleteOrder", new { id = item.userID, date = item.orderDate })
+                    </td>
+                }
+                else
+                {
+                    if (item.orderDate == DateTime.Now.Date)
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "EditOrder", new { id = item.userID, date = item.orderDate }) |
+                            @Html.ActionLink("Delete", "DeleteOrder", new { id = item.userID, date = item.orderDate })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>-</td>
+                    }
+                }
+            </tr>
+
+        }
+
+    </table>
+</div>

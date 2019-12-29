@@ -1,0 +1,73 @@
+﻿@model LMS.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Order";
+}
+
+@if (TempData["orderSucc"] != null)
+{
+    <div class="alert alert-success text-center" role="alert">
+        @TempData["orderSucc"]
+    </div>
+}
+
+@if (TempData["orderErr"] != null)
+{
+    <div class="alert alert-danger text-center" role="alert">
+        @TempData["orderErr"]
+    </div>
+}
+
+
+<div style="height:inherit; width:inherit;padding:30px ">
+    <h3 class="display-4 text-center">USER ALL ORDER INFORMATION</h3>
+</div>
+
+@Html.Partial("Order/OrderCardInfo")
+
+<div>
+    <div class="ui card" style="height:auto; width:inherit">
+        <h4 class="text-center" style="padding-top:20px">ORDER NOW</h4>
+        <div class="content">
+            <div class="extra content">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 ">
+                        @Html.Partial("Order/SetOrder", Model.myOrder)
+                    </div>
+
+
+                    <div class="col-sm-8">
+                        @Html.Partial("Order/OrderList", Model.orederList)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @if (User.IsInRole("admin") || User.IsInRole("subadmin"))
+    {
+    <div class="ui card" style="height:auto; width:inherit">
+        <h4 class="text-center" style="padding-top:20px">ALL ORDER'S INFORMATION</h4>
+        <div class="content">
+            <div class="extra content" >
+                <div class="col-sm-4" >
+                    <h5 class="text-center">PER HEAD COST</h5>
+                    @Html.Partial("Order/PerHeadCost", Model.perHeadCost)
+                </div>
+                <div class="col-sm-8">
+                    <h5 class="text-center">PER HEAD DETAILS</h5>
+                    @Html.Partial("Order/OrderList", Model.allOrederList)
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    }
+ </div>
+
+
+

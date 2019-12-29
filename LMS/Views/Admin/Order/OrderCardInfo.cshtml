@@ -1,0 +1,119 @@
+﻿<div class="row" style="padding : 20px">
+
+
+
+
+
+    <div class="col-sm-3 ">
+        <div class="ui card  " style="width:auto;background-color:#5F0767; color :#eee;border-radius:10px">
+            <h5 class="col-sm-offset-1">
+                <strong>
+
+
+                    <i class="user icon" style="padding-top:5px"></i>
+                    <strong>TOTAL MY ORDER - MONTH</strong>
+
+                </strong>
+            </h5>
+            <div class="content">
+                <div class="extra content">
+
+                    <h3 class="col-sm-offset-1">
+                        <strong>
+                            @TempData["totalMyOrder"]
+                            (@TempData["totalOrderwithCost"] taka)
+                        </strong>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @if (User.IsInRole("subadmin") || User.IsInRole("admin"))
+    {
+
+
+        <div class="col-sm-3 ">
+            <div class="ui card  " style="width:auto;background-color: #de4909; color :#eee;border-radius:10px">
+                <h5 class="col-sm-offset-1">
+                    <strong>
+
+
+                        <i class="user icon" style="padding-top:5px"></i>
+                        <strong>TOTAL ORDER TODAY </strong>
+
+                    </strong>
+                </h5>
+                <div class="content">
+                    <div class="extra content">
+
+
+                        <h3 class="col-sm-offset-1">
+                            <strong>
+                                @TempData["totalOrderToday"]
+                            </strong>
+                        </h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 ">
+            <div class="ui card  " style="width:auto;background-color:#0071B9; color :#eee;border-radius:10px">
+                <h5 class="col-sm-offset-1">
+                    <strong>
+
+
+                        <i class="user icon" style="padding-top:5px"></i>
+                        <strong>TOTAL ORDER (MONTH) </strong>
+
+                    </strong>
+                </h5>
+                <div class="content">
+                    <div class="extra content">
+
+
+                        <h3 class="col-sm-offset-1">
+                            <strong>
+                                @TempData["totalOrderMonth"] (@TempData["totalOrderMonthCost"] taka)
+                            </strong>
+                        </h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 ">
+            <div class="ui card  " style="width:auto;background-color: #c404a4; color :#eee;border-radius:10px">
+                <h5 class="col-sm-offset-1">
+                    <strong>
+
+
+                        <i class="user icon" style="padding-top:5px"></i>
+                        <strong>TOTAL ORDER LIFETIME </strong>
+
+                    </strong>
+                </h5>
+                <div class="content">
+                    <div class="extra content">
+
+
+                        <h3 class="col-sm-offset-1">
+                            <strong>
+                                @TempData["totalOrder"]
+                            </strong>
+                        </h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
