@@ -14,4 +14,4 @@ SCREEEN CAST OF LMS
 ![Alt Text](https://github.com/Mr-Rakib/ASP.NET-PROJECTS/blob/master/LMS/Screen%20Cast/Update%20User.png?raw=true)
 ![Alt Text](https://github.com/Mr-Rakib/ASP.NET-PROJECTS/blob/master/LMS/Screen%20Cast/User%20Profile.png?raw=true)
 ![Alt Text](https://github.com/Mr-Rakib/ASP.NET-PROJECTS/blob/master/LMS/Screen%20Cast/z%20Sign%20Up.png?raw=true)
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+
